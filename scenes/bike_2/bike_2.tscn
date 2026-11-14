@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dql58rtewthbd"]
+
+[ext_resource type="Script" uid="uid://bohipjmgg64j8" path="res://freecamera.gd" id="1_nayxd"]
+
+[sub_resource type="Environment" id="Environment_ta75p"]
+background_mode = 1
+background_color = Color(0.49218613, 0.6696573, 0.8723317, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3l2kh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u8orf"]
+size = Vector2(20, 20)
+
+[node name="Bike2" type="Node3D" unique_id=1034648255]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1872905614]
+environment = SubResource("Environment_ta75p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1682870717]
+transform = Transform3D(1, 0, 0, 0, -0.3754921, 0.9268256, 0, -0.9268256, -0.3754921, 0, 0, 0)
+
+[node name="FreeLookCamera" type="Camera3D" parent="." unique_id=698620561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3835641, 3.9806933)
+script = ExtResource("1_nayxd")
+metadata/_custom_type_script = "uid://bohipjmgg64j8"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=741399187]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=945371298]
+shape = SubResource("WorldBoundaryShape3D_3l2kh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1959479824]
+mesh = SubResource("PlaneMesh_u8orf")
